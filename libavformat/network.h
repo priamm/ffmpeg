@@ -23,6 +23,7 @@
 
 #include <errno.h>
 #include <stdint.h>
+#include <termios.h>
 
 #include "config.h"
 #include "libavutil/error.h"
@@ -299,6 +300,11 @@ int ff_accept(int fd, int timeout, URLContext *h);
 int ff_listen_connect(int fd, const struct sockaddr *addr,
                       socklen_t addrlen, int timeout,
                       URLContext *h, int will_try_next);
+
+int ff_sendto(int fd, const char *msg, int msg_len, int flag,
+                      const struct sockaddr *addr,
+                      socklen_t addrlen, int timeout, URLContext *h,
+                      int will_try_next);
 
 int ff_http_match_no_proxy(const char *no_proxy, const char *hostname);
 

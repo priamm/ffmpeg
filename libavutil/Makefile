@@ -4,6 +4,7 @@ DESC = FFmpeg utility library
 HEADERS = adler32.h                                                     \
           aes.h                                                         \
           aes_ctr.h                                                     \
+          application.h                                                 \
           attributes.h                                                  \
           audio_fifo.h                                                  \
           avassert.h                                                    \
@@ -25,6 +26,7 @@ HEADERS = adler32.h                                                     \
           display.h                                                     \
           downmix_info.h                                                \
           encryption_info.h                                             \
+          dns_cache.h                                                   \
           error.h                                                       \
           eval.h                                                        \
           fifo.h                                                        \
@@ -78,6 +80,12 @@ HEADERS = adler32.h                                                     \
           version.h                                                     \
           xtea.h                                                        \
           tea.h                                                         \
+          thread.h                                                      \
+          reverse.h                                                     \
+
+ifeq ($(ARCH),x86)
+HEADERS += $(ARCH)/asm.h
+endif
 
 HEADERS-$(CONFIG_LZO)                   += lzo.h
 
@@ -92,6 +100,7 @@ BUILT_HEADERS = avconfig.h                                              \
 OBJS = adler32.o                                                        \
        aes.o                                                            \
        aes_ctr.o                                                        \
+       application.o                                                    \
        audio_fifo.o                                                     \
        avstring.o                                                       \
        base64.o                                                         \
@@ -109,6 +118,7 @@ OBJS = adler32.o                                                        \
        display.o                                                        \
        downmix_info.o                                                   \
        encryption_info.o                                                \
+       dns_cache.o                                                      \
        error.o                                                          \
        eval.o                                                           \
        fifo.o                                                           \
